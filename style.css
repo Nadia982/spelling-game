@@ -45,3 +45,7 @@ body{
     border: none;
     border-radius: 1em;
 }
+
+.hide {
+    display: none;
+}
