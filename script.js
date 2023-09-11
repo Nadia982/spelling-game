@@ -52,7 +52,9 @@ const stopGame = () => {
 };
 
 //Generate word function
-const generateWord = () => {};
+const generateWord = () => {
+    letterContainer.classList.remove("hide");
+};
 
 //Initial function
 const init = () => {
