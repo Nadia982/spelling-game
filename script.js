@@ -60,6 +60,11 @@ const generateWord = () => {
     hintRef.innerHTML = `<div id="wordHint"><span>Hint: </span>${randomHint}</div>`
     let displayItem = "";
     randomWord.split("").forEach(value => {displayItem += `<span class="inputSpace">_</span>`})
+
+    //Display each element as span
+  userInpSection.innerHTML = displayItem;
+  userInpSection.innerHTML += `<div id="chanceCount">Chances Left: ${lossCount}</div>` 
+
 };
 
 
