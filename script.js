@@ -5,8 +5,8 @@ const options = {
   bold: "brave",
   boarder: "a pupil who stays at school overnight",
   borough: "name for different local areas in London",
-  bowled: "'threw', but in a game",
-  buffer: "a space separating two things",
+  bowled: "'threw', but in a ball game",
+  buffer: "a space or barrier separating two things",
   category: "type",
   climb: "to go upwards",
   collectable: "valuable item",
@@ -54,7 +54,15 @@ const stopGame = () => {
 //Generate word function
 const generateWord = () => {
     letterContainer.classList.remove("hide");
+    userInpSection.innerText = "";
+    randomWord = words[generateRandomValue(words)]; 
+    randomHint = options[randomWord];
+    hintRef.innerHTML = `<div id="wordHint"><span>Hint: </span>${randomHint}</div>`
+    let displayItem = "";
+    randomWord.split("").forEach(value => {displayItem += `<span class="inputSpace">_</span>`})
 };
+
+
 
 //Initial function
 const init = () => {
@@ -78,6 +86,11 @@ const init = () => {
     //Number to ASCII[A-Z]
     button.innerText = String.fromCharCode(i);
 
+    //Character button onClick
+    button.addEventListener("click", () => {
+
+    })
+    //Append generated buttons to the letters container
     letterContainer.appendChild(button);
   }
 };
