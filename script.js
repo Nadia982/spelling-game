@@ -22,7 +22,8 @@ const hintRef = document.querySelector(".hint-ref");
 const controls = document.querySelector(".controls-container");
 const startBtn = document.getElementById("start");
 const letterContainer = document.getElementById("letter-container");
-const userInpSection = document.getElementById("user-input-section");
+const userInpSectionChances  = document.getElementById("user-input-section-chances");
+const userInpSectionWord = document.getElementById("user-input-section-word");
 const resultText = document.getElementById("result");
 let word = document.getElementById("word");
 const words = Object.keys(options);
@@ -54,7 +55,7 @@ const stopGame = () => {
 //Generate word function
 const generateWord = () => {
   letterContainer.classList.remove("hide");
-  userInpSection.innerText = "";
+  userInpSectionWord.innerText = "";
   randomWord = words[generateRandomValue(words)];
   randomHint = options[randomWord];
   hintRef.innerHTML = `<div id="wordHint"><span>Hint: </span>${randomHint}</div>`;
@@ -64,8 +65,8 @@ const generateWord = () => {
   });
 
   //Display each element as span
-  userInpSection.innerHTML = displayItem;
-  userInpSection.innerHTML += `<div id="chanceCount">Chances Left: ${lossCount}</div>`;
+  userInpSectionWord.innerHTML = displayItem;
+  userInpSectionChances.innerHTML = `<div id="chanceCount">Chances Left: ${lossCount}</div>`;
 };
 
 //Initial function
@@ -76,7 +77,7 @@ const init = () => {
   word.innerText = "";
   randomHint = "";
   message.innerText = "";
-  userInpSection.innerHTML = "";
+  userInpSectionWord.innerHTML = "";
   letterContainer.classList.add("hide");
   letterContainer.innerHTML = "";
   generateWord();

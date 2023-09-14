@@ -68,8 +68,8 @@ body {
   color: var(--primary-color);
   border-radius: 0.3em;
   cursor: pointer;
-  height: 4em;
-  width: 4em;
+  height: 6em;
+  width: 6em;
 }
 
 #letter-container .correct {
@@ -92,9 +92,14 @@ body {
   font-weight: 600;
 }
 
-#user-input-section{
+#user-input-section-word{
   font-size: 2em;
   letter-spacing: 1.1;
+}
+
+#user-input-section-word > * {
+  width: 1em;
+  display: inline-block;
 }
 
 #chanceCount {
