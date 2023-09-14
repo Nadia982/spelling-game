@@ -125,11 +125,12 @@ const init = () => {
         document.getElementById("chanceCount").innerText = `Chances Left: ${lossCount}`;
         message.innerText = `Incorrect letter`;
         message.style.color = "#ff0000";
+        setTimeout(()=>{
         if(lossCount == 0) {
           word.innerHTML = `The word was <span>${randomWord}</span>`
           resultText.innerHTML = "Game over!"
           blocker();
-        }
+        }}, 4000);
       }
       //Disable clicked buttons 
       button.disabled = true;
