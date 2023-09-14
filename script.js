@@ -53,21 +53,20 @@ const stopGame = () => {
 
 //Generate word function
 const generateWord = () => {
-    letterContainer.classList.remove("hide");
-    userInpSection.innerText = "";
-    randomWord = words[generateRandomValue(words)]; 
-    randomHint = options[randomWord];
-    hintRef.innerHTML = `<div id="wordHint"><span>Hint: </span>${randomHint}</div>`
-    let displayItem = "";
-    randomWord.split("").forEach(value => {displayItem += `<span class="inputSpace">_</span>`})
+  letterContainer.classList.remove("hide");
+  userInpSection.innerText = "";
+  randomWord = words[generateRandomValue(words)];
+  randomHint = options[randomWord];
+  hintRef.innerHTML = `<div id="wordHint"><span>Hint: </span>${randomHint}</div>`;
+  let displayItem = "";
+  randomWord.split("").forEach((value) => {
+    displayItem += `<span class="inputSpace">_</span>`;
+  });
 
-    //Display each element as span
+  //Display each element as span
   userInpSection.innerHTML = displayItem;
-  userInpSection.innerHTML += `<div id="chanceCount">Chances Left: ${lossCount}</div>` 
-
+  userInpSection.innerHTML += `<div id="chanceCount">Chances Left: ${lossCount}</div>`;
 };
-
-
 
 //Initial function
 const init = () => {
@@ -93,13 +92,39 @@ const init = () => {
 
     //Character button onClick
     button.addEventListener("click", () => {
+      message.innerText = `Correct Letter`;
+      message.style.color = "#008000";
+      let charArray = randomWord.toUpperCase().split("");
+      let inputSpace = document.getElementByClassName("inputSpace");
 
-    })
+      //If array contains clicked value, replace the matched dash with letter
+      if (charArray.includes(button.innerText)) {
+        charArray.forEach((char, index) => {
+          //If character in array is same as clicked button, add "correct" class
+          if (char === button.innerText) {
+            button.classList.add("correct");
+            //replace dash with letter
+            inputSpace[index].innerText = char;
+            //increment counter
+            winCount++;
+            //if winCount = word length
+            if (winCount === charArray.length) {
+              resultText.innerHTML = "You won!";
+              startBtn.innerText = "restart";
+              //block all buttons
+              blocker();
+            }
+          }
+        });
+      } else {
+        
+      }
+    });
     //Append generated buttons to the letters container
     letterContainer.appendChild(button);
   }
 };
 
 window.onload = () => {
-init();
-}
+  init();
+};

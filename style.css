@@ -8,6 +8,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
 body {
@@ -75,6 +76,32 @@ body {
   background-color: var(--incorrect);
   color: #fff;
   border: 2px solid var(--incorrect);
+}
+
+.hint-ref{
+  margin-bottom: 1em;
+}
+
+.hint-ref span{
+  font-weight: 600;
+}
+
+#chanceCount {
+margin: 0;
+position: absolute;
+top: 0.62em;
+right: 2em;
+}
+
+#word{
+  font-weight: 600; 
+}
+
+#word span{
+  text-transform: uppercase;
+  font-weight: 400;
+  margin-top: 2em;
+   
 }
 
 .hide {
