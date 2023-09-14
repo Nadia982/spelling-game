@@ -76,7 +76,7 @@ const init = () => {
   randomWord = "";
   word.innerText = "";
   randomHint = "";
-  message.innerText = "";
+  message.inner = "";
   userInpSectionWord.innerHTML = "";
   letterContainer.classList.add("hide");
   letterContainer.innerHTML = "";
