@@ -24,7 +24,7 @@ const startBtn = document.getElementById("start");
 const letterContainer = document.getElementById("letter-container");
 const userInpSection = document.getElementById("user-input-section");
 const resultText = document.getElementById("result");
-const word = document.getElementById("word");
+let word = document.getElementById("word");
 const words = Object.keys(options);
 let randomWord = "",
   randomHint = "";
@@ -71,7 +71,7 @@ const generateWord = () => {
 //Initial function
 const init = () => {
   winCount = 0;
-  lossCount = 5;
+  lossCount = 7;
   randomWord = "";
   word.innerText = "";
   randomHint = "";
@@ -95,7 +95,7 @@ const init = () => {
       message.innerText = `Correct Letter`;
       message.style.color = "#008000";
       let charArray = randomWord.toUpperCase().split("");
-      let inputSpace = document.getElementByClassName("inputSpace");
+      let inputSpace = document.getElementsByClassName("inputSpace");
 
       //If array contains clicked value, replace the matched dash with letter
       if (charArray.includes(button.innerText)) {
@@ -108,17 +108,31 @@ const init = () => {
             //increment counter
             winCount++;
             //if winCount = word length
-            if (winCount === charArray.length) {
-              resultText.innerHTML = "You won!";
-              startBtn.innerText = "restart";
-              //block all buttons
-              blocker();
-            }
+
+            setTimeout(()=>{
+              if (winCount === charArray.length) {
+                resultText.innerHTML = `The word was <span>"${randomWord}"</span>. You won!`;
+                startBtn.innerText = "Restart"
+                //block all buttons
+                blocker();
+              }}, 4000);
           }
         });
       } else {
-        
+        //lose count
+        button.classList.add("incorrect");
+        lossCount--;
+        document.getElementById("chanceCount").innerText = `Chances Left: ${lossCount}`;
+        message.innerText = `Incorrect letter`;
+        message.style.color = "#ff0000";
+        if(lossCount == 0) {
+          word.innerHTML = `The word was <span>${randomWord}</span>`
+          resultText.innerHTML = "Game over!"
+          blocker();
+        }
       }
+      //Disable clicked buttons 
+      button.disabled = true;
     });
     //Append generated buttons to the letters container
     letterContainer.appendChild(button);
