@@ -13,6 +13,7 @@
 
 body {
   background-color: var(--primary-color);
+  height: 100vh;
 }
 
 .wrapper {
@@ -21,7 +22,7 @@ body {
   max-width: 40em;
   background-color: #fff;
   padding: 1em;
-  height: 100vh;
+  
   position: absolute;
   transform: translate(-50%, -50%);
   top: 50%;
@@ -97,7 +98,6 @@ body {
 
 #user-input-section-word{
   font-size: 2em;
-  letter-spacing: 1.1;
 }
 
 #user-input-section-word > * {
