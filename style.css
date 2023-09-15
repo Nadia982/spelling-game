@@ -17,10 +17,11 @@ body {
 
 .wrapper {
   position: absolute;
-  width: 95%;
+  width: 90%;
   max-width: 40em;
   background-color: #fff;
   padding: 1em;
+  height: 100vh;
   position: absolute;
   transform: translate(-50%, -50%);
   top: 50%;
@@ -69,8 +70,8 @@ body {
   border-radius: 0.3em;
   cursor: pointer;
   font-size: 2em;
-  height: 3em;
-  width: 3em;
+  height: 2.5em;
+  width: 2.5em;
 }
 
 #letter-container .correct {
