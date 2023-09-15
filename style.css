@@ -105,10 +105,10 @@ body {
   display: inline-block;
 }
 
-#chanceCount {
+#user-input-section-chances {
 margin: 0;
 position: absolute;
-top: 0.62em;
+top: 2em;
 right: 2em;
 }
 
