@@ -98,11 +98,13 @@ body {
 
 #user-input-section-word{
   font-size: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #user-input-section-word > * {
-  width: 1em;
-  display: inline-block;
+  width: 0.9em;
 }
 
 #user-input-section-chances {
