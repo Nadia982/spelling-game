@@ -1,19 +1,19 @@
-// Object containing words and hints
+// Object containing words and definitions
 const options = {
-  bible: "holy book for Christians",
-  border: "dividing line between two countries",
-  bold: "brave",
-  boarder: "a pupil who stays at school overnight",
-  borough: "name for different local areas in London",
-  bowled: "'threw', but in a ball game",
-  buffer: "a space or barrier separating two things",
-  category: "type",
-  climb: "to go upwards",
-  collectable: "valuable item",
-  comb: "you can use this to brush your hair",
-  commercial: "relating to business",
-  community: "group of people, often living near each other",
-  compatible: "if two people get on well then they are ____",
+  // bible: "holy book for Christians",
+  // border: "dividing line between two countries",
+  // bold: "brave, or bright in colour",
+  // boarder: "a pupil who stays at school overnight",
+  // borough: "name for different local areas in London",
+  // bowled: "'threw', but in a ball game",
+  // buffer: "Something that provides a space or barrier to reduce impact between two things",
+  // category: "type",
+  // climb: "to ascend a steep or vertical surface",
+  // collectable: "valuable item",
+  comb: "this isn't a brush, but you can use it to brush your hair",
+  // commercial: "relating to business",
+  // community: "group of people, often living near each other",
+  // compatible: "if two people get on well then they are ____",
 };
 
 //Initial references
@@ -58,7 +58,7 @@ const generateWord = () => {
   userInpSectionWord.innerText = "";
   randomWord = words[generateRandomValue(words)];
   randomHint = options[randomWord];
-  hintRef.innerHTML = `<div id="wordHint"><span>Hint: </span>${randomHint}</div>`;
+  hintRef.innerHTML = `<div id="wordHint"><span>Definition: </span>${randomHint}</div>`;
   let displayItem = "";
   randomWord.split("").forEach((value) => {
     displayItem += `<span class="inputSpace">_</span>`;
@@ -109,7 +109,34 @@ const init = () => {
             //increment counter
             winCount++;
             //if winCount = word length
-
+            
+            
+            if (winCount === charArray.length){
+              var defaults = {
+                spread: 360,
+                ticks: 80,
+                gravity: 0,
+                decay: 0.94,
+                startVelocity: 10,
+                shapes: ['star'],
+                colors: ['FFE400', 'FFBD00', 'E89400', 'FFCA6C', 'FDFFB8']
+              };
+              
+              function shoot() {
+                confetti({
+                  ...defaults,
+                  particleCount: 100,
+                  scalar: 2,
+                  shapes: ['star']
+                });
+              }
+              
+              setTimeout(shoot, 10);
+              setTimeout(shoot, 300);
+              setTimeout(shoot, 600);
+              setTimeout(shoot, 900);
+             
+            }
             setTimeout(()=>{
               if (winCount === charArray.length) {
                 resultText.innerHTML = `The word was <span>"${randomWord}"</span>. You won!`;
