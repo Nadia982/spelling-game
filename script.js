@@ -3,18 +3,18 @@ const options = {
   bible: "holy book for Christians",
   border: "dividing line between two countries",
   bold: "brave, or bright in colour",
-  boarder: "a pupil who stays at school overnight",
-  borough: "name for different local areas in London",
-  bowled: "'threw', but in a ball game",
-  buffer:
-    "Something that provides a space or barrier to reduce impact between two things",
-  category: "type",
-  climb: "to ascend a steep or vertical surface",
-  collectable: "valuable item",
-  comb: "this isn't a brush, but you can use it to brush your hair",
-  commercial: "relating to business",
-  community: "group of people, often living near each other",
-  compatible: "if two people get on well then they are ____",
+  // boarder: "a pupil who stays at school overnight",
+  // borough: "name for different local areas in London",
+  // bowled: "'threw', but in a ball game",
+  // buffer:
+  //   "Something that provides a space or barrier to reduce impact between two things",
+  // category: "type",
+  // climb: "to ascend a steep or vertical surface",
+  // collectable: "valuable item",
+  // comb: "this isn't a brush, but you can use it to brush your hair",
+  // commercial: "relating to business",
+  // community: "group of people, often living near each other",
+  // compatible: "if two people get on well then they are ____",
 };
 
 //Initial references
@@ -40,7 +40,7 @@ const generateRandomValue = (array) => Math.floor(Math.random() * array.length);
 
 //Block all the buttons
 const blocker = () => {
-  let lettersButtons = document.querySelectorAll(".letters");
+  // let lettersButtons = document.querySelectorAll(".letters");
   stopGame();
 };
 
@@ -75,11 +75,11 @@ const generateWord = () => {
 //Initial function
 const init = () => {
   winCount = 0;
-  lossCount = 7;
+  lossCount = 5;
   randomWord = "";
   word.innerText = "";
   randomHint = "";
-  message.inner = "";
+  message.innerText = "";
   userInpSectionWord.innerHTML = "";
   letterContainer.classList.add("hide");
   letterContainer.innerHTML = "";
@@ -102,6 +102,14 @@ const init = () => {
       let inputSpace = document.getElementsByClassName("inputSpace");
 
       //If array contains clicked value, replace the matched dash with letter
+
+const disableLetterButtons = () =>{
+  let allLetters = document.querySelectorAll(".letters");
+  let allLettersArray = Array.from(allLetters);
+  console.log(allLettersArray);
+  allLettersArray.forEach((button) => (button.disabled = true));
+}
+
       if (charArray.includes(button.innerText)) {
         charArray.forEach((char, index) => {
           //If character in array is same as clicked button, add "correct" class
@@ -112,31 +120,35 @@ const init = () => {
             //increment counter
             winCount++;
             //if winCount = word length
+
             if (winCount === charArray.length) {
-              var defaults = {
-                spread: 360,
-                ticks: 80,
-                gravity: 0,
-                decay: 0.94,
-                startVelocity: 10,
-                shapes: ["star"],
-                colors: ["FFE400", "FFBD00", "E89400", "FFCA6C", "FDFFB8"],
-              };
-
-              function shoot() {
-                confetti({
-                  ...defaults,
-                  particleCount: 70,
-                  scalar: 2,
-                  shapes: ["star"],
-                });
-              }
-
-              setTimeout(shoot, 0);
-              setTimeout(shoot, 300);
-              setTimeout(shoot, 600);
-              setTimeout(shoot, 900);
+              disableLetterButtons();
             }
+
+            setTimeout(() => {
+              if (winCount === charArray.length) {
+                var defaults = {
+                  spread: 360,
+                  ticks: 80,
+                  gravity: 0,
+                  decay: 0.96,
+                  startVelocity: 10,
+                  shapes: ["star"],
+                  colors: ["FFE400", "FFBD00", "E89400", "FFCA6C", "FDFFB8"],
+                };
+
+                function shoot() {
+                  confetti({
+                    ...defaults,
+                    particleCount: 370,
+                    scalar: 1.5,
+                    shapes: ["star"],
+                  });
+                }
+                setTimeout(shoot, 0);
+              }
+            }, 0);
+
             setTimeout(() => {
               if (winCount === charArray.length) {
                 resultText.innerHTML = `The word was <span>"${randomWord}"</span>. You won!`;
@@ -156,8 +168,11 @@ const init = () => {
         ).innerText = `Chances Left: ${lossCount}`;
         message.innerText = `Incorrect letter`;
         message.style.color = "#ff0000";
+        if(lossCount <=0) {
+          disableLetterButtons();
+        }
         setTimeout(() => {
-          if (lossCount == 0) {
+          if (lossCount <= 0) {
             word.innerHTML = `The word was <span>${randomWord}</span>`;
             resultText.innerHTML = "Game over!";
             blocker();
