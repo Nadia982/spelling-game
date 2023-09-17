@@ -128,3 +128,7 @@ right: 2em;
 .hide {
   display: none;
 }
+
+#result {
+  color: #fff;
+}

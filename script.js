@@ -1,20 +1,31 @@
+// To do next: 
+// 1) enable choice of different voices/volume/rate/pitch
+// 2) button to replay the word if needed
+// 3) enable typing of words on desktops
+// 4) add a visual depiction of lives remaining with heart emojis
+// 5) option to turn on animation/confetti (default should be "no confetti")
+// 6) smoother page transitions
+// 7) add a link to my portfolio - made with <3 by []
+// 8) option to turn on/off reading of words from start screen and game screen
+// 9) make user input letters in correct order
+
 // Object containing words and definitions
 const options = {
-  // bible: "holy book for Christians",
-  // border: "dividing line between two countries",
+  bible: "holy book for Christians",
+  border: "dividing line between two countries",
   bold: "brave, or bright in colour",
-  // boarder: "a pupil who stays at school overnight",
-  // borough: "name for different local areas in London",
-  // bowled: "'threw', but in a ball game",
-  // buffer:
-  //   "Something that provides a space or barrier to reduce impact between two things",
-  // category: "type",
-  // climb: "to ascend a steep or vertical surface",
-  // collectable: "valuable item",
+  boarder: "a pupil who stays at school overnight",
+  borough: "name for different local areas in London",
+  bowled: "'threw', but in a ball game",
+  buffer:
+    "Something that provides a space or barrier to reduce impact between two things",
+  category: "type",
+  climb: "to ascend a steep or vertical surface",
+  collectable: "valuable item",
   comb: "this isn't a brush, but you can use it to brush your hair",
-  // commercial: "relating to business",
-  // community: "group of people, often living near each other",
-  // compatible: "if two people get on well then they are ____",
+  commercial: "relating to business",
+  community: "group of people, often living near each other",
+  compatible: "if two people get on well then they are ____",
 };
 
 //Initial references
@@ -49,11 +60,11 @@ startBtn.addEventListener("click", () => {
   controls.classList.add("hide");
   init();
   //Read random word out loud
-  speechSynthesis.getVoices();
+  // speechSynthesis.getVoices();
   let voices = window.speechSynthesis.getVoices();
-  console.log(voices);
+  // console.log(voices);
   let msg = new SpeechSynthesisUtterance();
-  msg.voice = voices[3]; 
+  // msg.voice = voices[3]; 
   msg.text = randomWord;
 
   window.speechSynthesis.speak(msg);
@@ -129,6 +140,7 @@ const init = () => {
             //if winCount = word length
 
             if (winCount === charArray.length) {
+              message.innerHTML = `The word was <span>"${randomWord}"</span>. You won!`;
               disableLetterButtons();
             }
 
@@ -136,34 +148,35 @@ const init = () => {
               if (winCount === charArray.length) {
                 var defaults = {
                   spread: 360,
-                  ticks: 80,
+                  ticks: 120,
                   gravity: 0,
-                  decay: 0.96,
-                  startVelocity: 10,
+                  decay: 1,
+                  startVelocity: 3,
                   shapes: ["star"],
-                  colors: ["FFE400", "FFBD00", "E89400", "FFCA6C", "FDFFB8"],
+                  colors: ["FFE40011", "FFBD0011", "E8940011", "FFCA6C11", "FDFFB822"],
                 };
 
                 function shoot() {
                   confetti({
                     ...defaults,
-                    particleCount: 370,
+                    particleCount: 100,
                     scalar: 1.5,
                     shapes: ["star"],
                   });
                 }
-                setTimeout(shoot, 0);
+                setTimeout(shoot, 10);
               }
             }, 0);
 
-            setTimeout(() => {
+            
               if (winCount === charArray.length) {
-                resultText.innerHTML = `The word was <span>"${randomWord}"</span>. You won!`;
+                setTimeout(() => {
                 startBtn.innerText = "Restart";
                 //block all buttons
                 blocker();
+              }, 3000);
               }
-            }, 4000);
+            
           }
         });
       } else {
@@ -178,13 +191,15 @@ const init = () => {
         if (lossCount <= 0) {
           disableLetterButtons();
         }
-        setTimeout(() => {
+        
           if (lossCount <= 0) {
-            word.innerHTML = `The word was <span>${randomWord}</span>`;
-            resultText.innerHTML = "Game over!";
+            message.innerHTML = `The word was <span>"${randomWord}"</span>. Better luck next time!`;
+            setTimeout(() => {
+            startBtn.innerText = "Restart";
             blocker();
+          }, 3000);
           }
-        }, 4000);
+        
       }
       //Disable clicked buttons
       button.disabled = true;
