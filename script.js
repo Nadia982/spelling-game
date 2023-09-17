@@ -1,7 +1,7 @@
 // Object containing words and definitions
 const options = {
-  bible: "holy book for Christians",
-  border: "dividing line between two countries",
+  // bible: "holy book for Christians",
+  // border: "dividing line between two countries",
   bold: "brave, or bright in colour",
   // boarder: "a pupil who stays at school overnight",
   // borough: "name for different local areas in London",
@@ -11,7 +11,7 @@ const options = {
   // category: "type",
   // climb: "to ascend a steep or vertical surface",
   // collectable: "valuable item",
-  // comb: "this isn't a brush, but you can use it to brush your hair",
+  comb: "this isn't a brush, but you can use it to brush your hair",
   // commercial: "relating to business",
   // community: "group of people, often living near each other",
   // compatible: "if two people get on well then they are ____",
@@ -48,6 +48,15 @@ const blocker = () => {
 startBtn.addEventListener("click", () => {
   controls.classList.add("hide");
   init();
+  //Read random word out loud
+  speechSynthesis.getVoices();
+  let voices = window.speechSynthesis.getVoices();
+  console.log(voices);
+  let msg = new SpeechSynthesisUtterance();
+  msg.voice = voices[3]; 
+  msg.text = randomWord;
+
+  window.speechSynthesis.speak(msg);
 });
 
 //Stop game
@@ -101,15 +110,13 @@ const init = () => {
       let charArray = randomWord.toUpperCase().split("");
       let inputSpace = document.getElementsByClassName("inputSpace");
 
+      const disableLetterButtons = () => {
+        let allLetters = document.querySelectorAll(".letters");
+        let allLettersArray = Array.from(allLetters);
+        console.log(allLettersArray);
+        allLettersArray.forEach((button) => (button.disabled = true));
+      };
       //If array contains clicked value, replace the matched dash with letter
-
-const disableLetterButtons = () =>{
-  let allLetters = document.querySelectorAll(".letters");
-  let allLettersArray = Array.from(allLetters);
-  console.log(allLettersArray);
-  allLettersArray.forEach((button) => (button.disabled = true));
-}
-
       if (charArray.includes(button.innerText)) {
         charArray.forEach((char, index) => {
           //If character in array is same as clicked button, add "correct" class
@@ -168,7 +175,7 @@ const disableLetterButtons = () =>{
         ).innerText = `Chances Left: ${lossCount}`;
         message.innerText = `Incorrect letter`;
         message.style.color = "#ff0000";
-        if(lossCount <=0) {
+        if (lossCount <= 0) {
           disableLetterButtons();
         }
         setTimeout(() => {
