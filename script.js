@@ -1,19 +1,20 @@
 // Object containing words and definitions
 const options = {
-  // bible: "holy book for Christians",
-  // border: "dividing line between two countries",
-  // bold: "brave, or bright in colour",
-  // boarder: "a pupil who stays at school overnight",
-  // borough: "name for different local areas in London",
-  // bowled: "'threw', but in a ball game",
-  // buffer: "Something that provides a space or barrier to reduce impact between two things",
-  // category: "type",
-  // climb: "to ascend a steep or vertical surface",
-  // collectable: "valuable item",
+  bible: "holy book for Christians",
+  border: "dividing line between two countries",
+  bold: "brave, or bright in colour",
+  boarder: "a pupil who stays at school overnight",
+  borough: "name for different local areas in London",
+  bowled: "'threw', but in a ball game",
+  buffer:
+    "Something that provides a space or barrier to reduce impact between two things",
+  category: "type",
+  climb: "to ascend a steep or vertical surface",
+  collectable: "valuable item",
   comb: "this isn't a brush, but you can use it to brush your hair",
-  // commercial: "relating to business",
-  // community: "group of people, often living near each other",
-  // compatible: "if two people get on well then they are ____",
+  commercial: "relating to business",
+  community: "group of people, often living near each other",
+  compatible: "if two people get on well then they are ____",
 };
 
 //Initial references
@@ -22,7 +23,9 @@ const hintRef = document.querySelector(".hint-ref");
 const controls = document.querySelector(".controls-container");
 const startBtn = document.getElementById("start");
 const letterContainer = document.getElementById("letter-container");
-const userInpSectionChances  = document.getElementById("user-input-section-chances");
+const userInpSectionChances = document.getElementById(
+  "user-input-section-chances"
+);
 const userInpSectionWord = document.getElementById("user-input-section-word");
 const resultText = document.getElementById("result");
 let word = document.getElementById("word");
@@ -109,58 +112,59 @@ const init = () => {
             //increment counter
             winCount++;
             //if winCount = word length
-            
-            
-            if (winCount === charArray.length){
+            if (winCount === charArray.length) {
               var defaults = {
                 spread: 360,
                 ticks: 80,
                 gravity: 0,
                 decay: 0.94,
                 startVelocity: 10,
-                shapes: ['star'],
-                colors: ['FFE400', 'FFBD00', 'E89400', 'FFCA6C', 'FDFFB8']
+                shapes: ["star"],
+                colors: ["FFE400", "FFBD00", "E89400", "FFCA6C", "FDFFB8"],
               };
-              
+
               function shoot() {
                 confetti({
                   ...defaults,
-                  particleCount: 100,
+                  particleCount: 70,
                   scalar: 2,
-                  shapes: ['star']
+                  shapes: ["star"],
                 });
               }
-              
-              setTimeout(shoot, 10);
+
+              setTimeout(shoot, 0);
               setTimeout(shoot, 300);
               setTimeout(shoot, 600);
               setTimeout(shoot, 900);
-             
             }
-            setTimeout(()=>{
+            setTimeout(() => {
               if (winCount === charArray.length) {
                 resultText.innerHTML = `The word was <span>"${randomWord}"</span>. You won!`;
-                startBtn.innerText = "Restart"
+                startBtn.innerText = "Restart";
                 //block all buttons
                 blocker();
-              }}, 4000);
+              }
+            }, 4000);
           }
         });
       } else {
         //lose count
         button.classList.add("incorrect");
         lossCount--;
-        document.getElementById("chanceCount").innerText = `Chances Left: ${lossCount}`;
+        document.getElementById(
+          "chanceCount"
+        ).innerText = `Chances Left: ${lossCount}`;
         message.innerText = `Incorrect letter`;
         message.style.color = "#ff0000";
-        setTimeout(()=>{
-        if(lossCount == 0) {
-          word.innerHTML = `The word was <span>${randomWord}</span>`
-          resultText.innerHTML = "Game over!"
-          blocker();
-        }}, 4000);
+        setTimeout(() => {
+          if (lossCount == 0) {
+            word.innerHTML = `The word was <span>${randomWord}</span>`;
+            resultText.innerHTML = "Game over!";
+            blocker();
+          }
+        }, 4000);
       }
-      //Disable clicked buttons 
+      //Disable clicked buttons
       button.disabled = true;
     });
     //Append generated buttons to the letters container
