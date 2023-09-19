@@ -13,7 +13,7 @@
 
 body {
   background-color: var(--primary-color);
-  height: 100vh;
+  /* height: 100vh; */
 }
 
 .wrapper {
@@ -22,8 +22,6 @@ body {
   max-width: 40em;
   background-color: #fff;
   padding: 1em;
-  
-  position: absolute;
   transform: translate(-50%, -50%);
   top: 50%;
   left: 50%;
@@ -64,13 +62,17 @@ body {
   margin: 0 auto;
 }
 
+/* .icon = play button icon in "replay the word button */
 .icon {
   font-size: 2rem;
 }
 
+/* #message = message above the alphabet tiles that reads "correct" or "incorrect" when you guess a correct/incorrect letter */
 #message{
-  height: 3em;
+  height: 2.5em;
 }
+
+/* #letter-container = each tile holding the letters of the alphabet on a grid  */
 
 #letter-container {
   display: flex;
@@ -127,7 +129,11 @@ body {
 margin: 0;
 position: absolute;
 top: 2em;
-right: 2em;
+left: 2em;
+}
+
+.heart{
+  color: red;
 }
 
 #word{
@@ -138,7 +144,6 @@ right: 2em;
   text-transform: uppercase;
   font-weight: 400;
   margin-top: 2em;
-     
 }
 
 .hide {

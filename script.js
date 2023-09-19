@@ -1,6 +1,5 @@
 // To do next: 
 // 1) enable choice of different voices/volume/rate/pitch
-// 2) button to replay the word if needed
 // 3) enable typing of words on desktops
 // 4) add a visual depiction of lives remaining with heart emojis
 // 5) option to turn on animation/confetti (default should be "no confetti")
@@ -41,7 +40,7 @@ const userInpSectionChances = document.getElementById(
 );
 const userInpSectionWord = document.getElementById("user-input-section-word");
 const resultText = document.getElementById("result");
-let word = document.getElementById("word");
+// let word = document.getElementById("word");
 const words = Object.keys(options);
 let randomWord = "",
   randomHint = "";
@@ -50,6 +49,7 @@ let winCount = 0,
 
 //Generate random value
 const generateRandomValue = (array) => Math.floor(Math.random() * array.length);
+
 
 //Block all the buttons
 const blocker = () => {
@@ -101,11 +101,17 @@ const generateWord = () => {
 
   //Display each element as span
   userInpSectionWord.innerHTML = displayItem;
-  userInpSectionChances.innerHTML = `<div id="chanceCount">Chances Left: ${lossCount}</div>`;
 };
 
 //Initial function
 const init = () => {
+  //Show remaining chances
+  const showChances = () => {
+    let heartsLeft = new Array(lossCount);
+    heartsLeft.fill('<ion-icon class="heart" name="heart"></ion-icon>');
+    userInpSectionChances.innerHTML = 
+    `<div id="chanceCount">Chances Left: ${lossCount} &nbsp ${heartsLeft.join(" ")}</div>`;
+    }
   winCount = 0;
   lossCount = 5;
   randomWord = "";
@@ -116,6 +122,7 @@ const init = () => {
   letterContainer.classList.add("hide");
   letterContainer.innerHTML = "";
   generateWord();
+  showChances();
 
   //Creating letter buttons
 
@@ -195,9 +202,10 @@ const init = () => {
         //lose count
         button.classList.add("incorrect");
         lossCount--;
-        document.getElementById(
-          "chanceCount"
-        ).innerText = `Chances Left: ${lossCount}`;
+        showChances();
+        // document.getElementById(
+        //   "chanceCount"
+        // ).innerText = `Chances Left: ${lossCount}`;
         message.innerText = `Incorrect letter`;
         message.style.color = "#ff0000";
         if (lossCount <= 0) {
