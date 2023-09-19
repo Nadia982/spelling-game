@@ -43,14 +43,29 @@ body {
   top: 0;
 }
 
-#start {
-  font-size: 1.2em;
-  padding: 1em 3em;
+#start, #speak-word-button {
+  font-size: 1.2rem;
   background-color: #fff;
-  border: none;
   border-radius: 1em;
   margin-top: 1em;
   cursor: pointer;
+}
+
+#start {
+  border: none;
+  padding: 1em 3em;
+}
+
+#speak-word-button{
+  padding: 0.2em 0.4em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.icon {
+  font-size: 2rem;
 }
 
 #message{
@@ -70,7 +85,7 @@ body {
   color: var(--primary-color);
   border-radius: 0.3em;
   cursor: pointer;
-  font-size: 1.7em;
+  font-size: 1.7rem;
   height: 2em;
   width: 2em;
 }
@@ -90,6 +105,7 @@ body {
 .hint-ref{
   margin-top: 3em;
   margin-bottom: 1em;
+  font-size: 1.2rem;
 }
 
 .hint-ref span{
@@ -97,7 +113,7 @@ body {
 }
 
 #user-input-section-word{
-  font-size: 2em;
+  font-size: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;

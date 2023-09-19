@@ -7,7 +7,8 @@
 // 6) smoother page transitions
 // 7) add a link to my portfolio - made with <3 by []
 // 8) option to turn on/off reading of words from start screen and game screen
-// 9) make user input letters in correct order
+// 9) easy and hard modes - hard mode requires user to input letters in correct order
+// 10) about/contact pages
 
 // Object containing words and definitions
 const options = {
@@ -33,6 +34,7 @@ const message = document.getElementById("message");
 const hintRef = document.querySelector(".hint-ref");
 const controls = document.querySelector(".controls-container");
 const startBtn = document.getElementById("start");
+const speakWordBtn = document.getElementById("speak-word-button");
 const letterContainer = document.getElementById("letter-container");
 const userInpSectionChances = document.getElementById(
   "user-input-section-chances"
@@ -67,6 +69,16 @@ startBtn.addEventListener("click", () => {
   // msg.voice = voices[3]; 
   msg.text = randomWord;
 
+  window.speechSynthesis.speak(msg);
+});
+
+//Replay word when clicking "replay the word" button
+
+speakWordBtn.addEventListener("click", () => {
+  //Read random word out loud
+  let voices = window.speechSynthesis.getVoices();
+  let msg = new SpeechSynthesisUtterance();
+  msg.text = randomWord;
   window.speechSynthesis.speak(msg);
 });
 
@@ -171,7 +183,7 @@ const init = () => {
             
               if (winCount === charArray.length) {
                 setTimeout(() => {
-                startBtn.innerText = "Restart";
+                startBtn.innerText = "New word";
                 //block all buttons
                 blocker();
               }, 3000);
