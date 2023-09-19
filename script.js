@@ -34,6 +34,7 @@ const hintRef = document.querySelector(".hint-ref");
 const controls = document.querySelector(".controls-container");
 const startBtn = document.getElementById("start");
 const speakWordBtn = document.getElementById("speak-word-button");
+const speakDefinitionBtn = document.getElementById("speak-definition-button");
 const letterContainer = document.getElementById("letter-container");
 const userInpSectionChances = document.getElementById(
   "user-input-section-chances"
@@ -46,9 +47,16 @@ let randomWord = "",
   randomHint = "";
 let winCount = 0,
   lossCount = 0;
-
+let questionNo = 0;
 //Generate random value
-const generateRandomValue = (array) => Math.floor(Math.random() * array.length);
+// let names = ["John", "Paul", "George", "Ringo"];
+// for (let i = 0, tempnames = names, len = names.length; i < len; i++) {
+//   let rnd = Math.floor(Math.random() * tempnames.length);
+//   console.log(tempnames[rnd]);
+//   tempnames.splice(rnd,1);
+// }
+
+// const generateRandomValue = (array) => Math.floor(Math.random() * array.length);
 
 //Block all the buttons
 const blocker = () => {
@@ -71,7 +79,7 @@ startBtn.addEventListener("click", () => {
   window.speechSynthesis.speak(msg);
 });
 
-//Replay word when clicking "replay the word" button
+//Read word out loud after clicking "Say definition" button
 
 speakWordBtn.addEventListener("click", () => {
   //Read random word out loud
@@ -81,6 +89,16 @@ speakWordBtn.addEventListener("click", () => {
   window.speechSynthesis.speak(msg);
 });
 
+//Read definition out loud after clicking "Say definition" button
+speakDefinitionBtn.addEventListener("click", () => {
+  //Read definition of random word out loud
+  let voices = window.speechSynthesis.getVoices();
+  let msg = new SpeechSynthesisUtterance();
+  msg.text = randomHint;
+  window.speechSynthesis.speak(msg);
+});
+
+
 //Stop game
 const stopGame = () => {
   controls.classList.remove("hide");
@@ -88,9 +106,27 @@ const stopGame = () => {
 
 //Generate word function
 const generateWord = () => {
+  // letterContainer = each tile holding the letters of the alphabet on a grid 
+  // makes the alphabet tiles visible 
   letterContainer.classList.remove("hide");
   userInpSectionWord.innerText = "";
-  randomWord = words[generateRandomValue(words)];
+  
+// let names = ["John", "Paul", "George", "Ringo"];
+// for (let i = 0, tempnames = names, len = names.length; i < len; i++) {
+//   let rnd = Math.floor(Math.random() * tempnames.length);
+//   console.log(tempnames[rnd]);
+//   tempnames.splice(rnd,1);
+// }
+
+for(let i = 0, tempnames = words, len = words.length; i <len; i++){
+  let rnd = Math.floor(Math.random() * tempnames.length);
+  console.log(tempnames[rnd]); 
+  randomArray = tempnames[rnd];
+  tempnames.splice(rnd,1);
+}
+
+  // randomWord = words[generateRandomValue(words)];
+  // randomWord = randomArray
   randomHint = options[randomWord];
   hintRef.innerHTML = `<div id="wordHint"><span>Definition: </span>${randomHint}</div>`;
   let displayItem = "";
@@ -104,6 +140,11 @@ const generateWord = () => {
 
 //Initial function
 const init = () => {
+  //Show question no
+  const showQuestionNo = () => {
+
+  }
+
   //Show remaining chances
   const showChances = () => {
     let heartsLeft = new Array(lossCount);
@@ -112,6 +153,7 @@ const init = () => {
       " "
     )}</div>`;
   };
+  
   winCount = 0;
   lossCount = 5;
   randomWord = "";
@@ -161,7 +203,7 @@ const init = () => {
               message.innerHTML = `The word was <span>"${randomWord}"</span>. You won!`;
               disableLetterButtons();
             }
-
+            //confetti
             setTimeout(() => {
               if (winCount === charArray.length) {
                 var defaults = {
@@ -194,7 +236,7 @@ const init = () => {
 
             if (winCount === charArray.length) {
               setTimeout(() => {
-                startBtn.innerText = "New word";
+                startBtn.innerText = "Next word";
                 //block all buttons
                 blocker();
               }, 3000);

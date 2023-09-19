@@ -41,7 +41,7 @@ body {
   top: 0;
 }
 
-#start, #speak-word-button {
+#start, .speak {
   font-size: 1.2rem;
   background-color: #fff;
   border-radius: 1em;
@@ -54,12 +54,20 @@ body {
   padding: 1em 3em;
 }
 
-#speak-word-button{
-  padding: 0.2em 0.4em;
+.speak-buttons-container{
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto;
+  column-gap: 1em;
+}
+
+.speak{
+  padding: 0.2em 0.8em;
+  min-width: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  /* margin: 0 auto; */
 }
 
 /* .icon = play button icon in "replay the word button */
