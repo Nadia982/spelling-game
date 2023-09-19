@@ -1,4 +1,4 @@
-// To do next: 
+// To do next:
 // 1) enable choice of different voices/volume/rate/pitch
 // 3) enable typing of words on desktops
 // 4) add a visual depiction of lives remaining with heart emojis
@@ -50,7 +50,6 @@ let winCount = 0,
 //Generate random value
 const generateRandomValue = (array) => Math.floor(Math.random() * array.length);
 
-
 //Block all the buttons
 const blocker = () => {
   // let lettersButtons = document.querySelectorAll(".letters");
@@ -66,7 +65,7 @@ startBtn.addEventListener("click", () => {
   let voices = window.speechSynthesis.getVoices();
   // console.log(voices);
   let msg = new SpeechSynthesisUtterance();
-  // msg.voice = voices[3]; 
+  // msg.voice = voices[3];
   msg.text = randomWord;
 
   window.speechSynthesis.speak(msg);
@@ -99,7 +98,7 @@ const generateWord = () => {
     displayItem += `<span class="inputSpace">_</span>`;
   });
 
-  //Display each element as span
+  //Display each element as span containing underscored spaces, to be replaced by letters that the player guesses
   userInpSectionWord.innerHTML = displayItem;
 };
 
@@ -109,13 +108,14 @@ const init = () => {
   const showChances = () => {
     let heartsLeft = new Array(lossCount);
     heartsLeft.fill('<ion-icon class="heart" name="heart"></ion-icon>');
-    userInpSectionChances.innerHTML = 
-    `<div id="chanceCount">Chances Left: ${lossCount} &nbsp ${heartsLeft.join(" ")}</div>`;
-    }
+    userInpSectionChances.innerHTML = `<div id="chanceCount">Chances Left: ${lossCount} &nbsp ${heartsLeft.join(
+      " "
+    )}</div>`;
+  };
   winCount = 0;
   lossCount = 5;
   randomWord = "";
-  word.innerText = "";
+  // word.innerText = "";
   randomHint = "";
   message.innerText = "";
   userInpSectionWord.innerHTML = "";
@@ -143,7 +143,6 @@ const init = () => {
       const disableLetterButtons = () => {
         let allLetters = document.querySelectorAll(".letters");
         let allLettersArray = Array.from(allLetters);
-        console.log(allLettersArray);
         allLettersArray.forEach((button) => (button.disabled = true));
       };
       //If array contains clicked value, replace the matched dash with letter
@@ -172,7 +171,13 @@ const init = () => {
                   decay: 1,
                   startVelocity: 3,
                   shapes: ["star"],
-                  colors: ["FFE40011", "FFBD0011", "E8940011", "FFCA6C11", "FDFFB822"],
+                  colors: [
+                    "FFE40011",
+                    "FFBD0011",
+                    "E8940011",
+                    "FFCA6C11",
+                    "FDFFB822",
+                  ],
                 };
 
                 function shoot() {
@@ -187,15 +192,13 @@ const init = () => {
               }
             }, 0);
 
-            
-              if (winCount === charArray.length) {
-                setTimeout(() => {
+            if (winCount === charArray.length) {
+              setTimeout(() => {
                 startBtn.innerText = "New word";
                 //block all buttons
                 blocker();
               }, 3000);
-              }
-            
+            }
           }
         });
       } else {
@@ -211,15 +214,14 @@ const init = () => {
         if (lossCount <= 0) {
           disableLetterButtons();
         }
-        
-          if (lossCount <= 0) {
-            message.innerHTML = `The word was <span>"${randomWord}"</span>. Better luck next time!`;
-            setTimeout(() => {
+
+        if (lossCount <= 0) {
+          message.innerHTML = `The word was <span>"${randomWord}"</span>. Better luck next time!`;
+          setTimeout(() => {
             startBtn.innerText = "Restart";
             blocker();
           }, 3000);
-          }
-        
+        }
       }
       //Disable clicked buttons
       button.disabled = true;
