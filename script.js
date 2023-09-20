@@ -145,9 +145,9 @@ const init = () => {
   const showChances = () => {
     let heartsLeft = new Array(lossCount);
     heartsLeft.fill('<ion-icon class="heart" name="heart"></ion-icon>');
-    userInpSectionChances.innerHTML = `<div id="chanceCount">Chances left (for this word): ${lossCount} &nbsp ${heartsLeft.join(
+    userInpSectionChances.innerHTML = `<div id="chanceCount"><span>Chances left (for this word): ${lossCount}</span><span> ${heartsLeft.join(
       " "
-    )}</div>`;
+    )}</span></div>`;
   };
   winCount = 0;
   lossCount = 5;

@@ -70,14 +70,12 @@ body {
 
 .speak{
   padding: 0.2em 0.8em;
-  /* max-width: 220px; */
-  width: 25vw;
+  flex: 1 1 auto;
+  max-width: 200px;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  justify-content: space-around;
   margin: 0;
-  gap: .2em;
 }
 
 .speak > span {
@@ -177,4 +175,29 @@ text-align: left;
 
 #result {
   color: #fff;
+}
+
+@media only screen and (max-width: 600px) {
+  /* body {
+    line-height: 0.9;
+  } */
+
+    #chanceCount {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #start, .speak {
+    margin-top: 0;
+    line-height: 0.9;
+  }
+
+  /* .icon {
+    font-size: 1.5rem;
+  } */
+
+  #letter-container button{
+    font-size: 1.4rem;
+  }
+
 }
