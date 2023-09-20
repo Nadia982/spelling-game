@@ -18,7 +18,7 @@ body {
 
 .wrapper {
   position: absolute;
-  width: 90%;
+  width: 95%;
   max-width: 40em;
   background-color: #fff;
   padding: 1em;
@@ -70,11 +70,18 @@ body {
 
 .speak{
   padding: 0.2em 0.8em;
-  min-width: 150px;
+  /* max-width: 220px; */
+  width: 25vw;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  justify-content: space-around;
   margin: 0;
+  gap: .2em;
+}
+
+.speak > span {
+  width: 80px;
 }
 
 /* .icon = play button icon in "replay the word button */
