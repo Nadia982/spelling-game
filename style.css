@@ -84,7 +84,7 @@ body {
 
 /* #message = message above the alphabet tiles that reads "correct" or "incorrect" when you guess a correct/incorrect letter */
 #message{
-  height: 2.5em;
+  height: 3em;
 }
 
 /* #letter-container = each tile holding the letters of the alphabet on a grid  */
