@@ -44,18 +44,17 @@ const userInpSectionWord = document.getElementById("user-input-section-word");
 const resultText = document.getElementById("result");
 // let word = document.getElementById("word");
 const words = Object.keys(options);
-let randomWord = "",
-  randomHint = "";
-let winCount = 0,
-  lossCount = 0;
+let randomWord = "";
+let randomHint = "";
+let winCount = 0;
+let lossCount = 0;
 let questionNo = 0;
-//Generate random value
-// let names = ["John", "Paul", "George", "Ringo"];
-// for (let i = 0, tempnames = names, len = names.length; i < len; i++) {
-//   let rnd = Math.floor(Math.random() * tempnames.length);
-//   console.log(tempnames[rnd]);
-//   tempnames.splice(rnd,1);
-// }
+let randomArray = [];
+for (let i = 0, tempnames = words, len = words.length; i < len; i++) {
+  let rnd = Math.floor(Math.random() * tempnames.length);
+  randomArray.push(tempnames[rnd]);
+  tempnames.splice(rnd, 1);
+}
 
 // const generateRandomValue = (array) => Math.floor(Math.random() * array.length);
 
@@ -67,6 +66,19 @@ const blocker = () => {
 
 //Start game
 startBtn.addEventListener("click", () => {
+  const reset = () => {
+    let allLetters = document.querySelectorAll(".letters");
+    let allLettersArray = Array.from(allLetters);
+    allLettersArray.forEach((button) => (button.disabled = false));
+    allLettersArray.forEach((button) => button.classList.remove("correct"));
+    allLettersArray.forEach((button) => button.classList.remove("incorrect"));
+    message.innerText = "";
+  };
+
+  reset();
+  questionNo++;
+  generateWord();
+
   controls.classList.add("hide");
   init();
   //Read random word out loud
@@ -76,7 +88,6 @@ startBtn.addEventListener("click", () => {
   let msg = new SpeechSynthesisUtterance();
   // msg.voice = voices[3];
   msg.text = randomWord;
-
   window.speechSynthesis.speak(msg);
 });
 
@@ -99,7 +110,6 @@ speakDefinitionBtn.addEventListener("click", () => {
   window.speechSynthesis.speak(msg);
 });
 
-
 //Stop game
 const stopGame = () => {
   controls.classList.remove("hide");
@@ -107,29 +117,18 @@ const stopGame = () => {
 
 //Generate word function
 const generateWord = () => {
-  // letterContainer = each tile holding the letters of the alphabet on a grid 
-  // makes the alphabet tiles visible 
+
+  // letterContainer = each tile holding the letters of the alphabet on a grid. This code makes the alphabet tiles visible
   letterContainer.classList.remove("hide");
   userInpSectionWord.innerText = "";
-  
-// let names = ["John", "Paul", "George", "Ringo"];
-// for (let i = 0, tempnames = names, len = names.length; i < len; i++) {
-//   let rnd = Math.floor(Math.random() * tempnames.length);
-//   console.log(tempnames[rnd]);
-//   tempnames.splice(rnd,1);
-// }
-
-for(let i = 0, tempnames = words, len = words.length; i <len; i++){
-  let rnd = Math.floor(Math.random() * tempnames.length);
-  console.log(tempnames[rnd]); 
-  randomArray = tempnames[rnd];
-  tempnames.splice(rnd,1);
-}
 
   // randomWord = words[generateRandomValue(words)];
-  // randomWord = randomArray
+  console.log(randomArray);
+  randomWord = randomArray[questionNo];
+  console.log(randomWord);
   randomHint = options[randomWord];
-  questionNoContainer.innerHTML = `<div id="questionNo"><span>Question no: </span>${questionNo+1}</div>`;
+  console.log(randomHint);
+  questionNoContainer.innerHTML = `<div id="questionNo"><span>Question </span>${questionNo} of ${randomArray.length}</div>`;
   hintRef.innerHTML = `<div id="wordHint"><span>Definition: </span>${randomHint}</div>`;
   let displayItem = "";
   randomWord.split("").forEach((value) => {
@@ -142,34 +141,27 @@ for(let i = 0, tempnames = words, len = words.length; i <len; i++){
 
 //Initial function
 const init = () => {
-  //Show question no
-  const showQuestionNo = () => {
-
-  }
-
   //Show remaining chances
   const showChances = () => {
     let heartsLeft = new Array(lossCount);
     heartsLeft.fill('<ion-icon class="heart" name="heart"></ion-icon>');
-    userInpSectionChances.innerHTML = `<div id="chanceCount">Chances Left: ${lossCount} &nbsp ${heartsLeft.join(
+    userInpSectionChances.innerHTML = `<div id="chanceCount">Chances left (for this word): ${lossCount} &nbsp ${heartsLeft.join(
       " "
     )}</div>`;
   };
-  
   winCount = 0;
   lossCount = 5;
   randomWord = "";
-  // word.innerText = "";
+  word.innerText = "";
   randomHint = "";
   message.innerText = "";
   userInpSectionWord.innerHTML = "";
   letterContainer.classList.add("hide");
   letterContainer.innerHTML = "";
   generateWord();
+
   showChances();
-
-  //Creating letter buttons
-
+  //Creating alphabet letter buttons
   for (let i = 65; i < 91; i++) {
     let button = document.createElement("button");
     button.classList.add("letters");
@@ -189,6 +181,7 @@ const init = () => {
         let allLettersArray = Array.from(allLetters);
         allLettersArray.forEach((button) => (button.disabled = true));
       };
+
       //If array contains clicked value, replace the matched dash with letter
       if (charArray.includes(button.innerText)) {
         charArray.forEach((char, index) => {
@@ -241,7 +234,7 @@ const init = () => {
                 startBtn.innerText = "Next word";
                 //block all buttons
                 blocker();
-              }, 3000);
+              }, 2500);
             }
           }
         });
@@ -260,9 +253,10 @@ const init = () => {
         }
 
         if (lossCount <= 0) {
+          questionNo++;
           message.innerHTML = `The word was <span>"${randomWord}"</span>. Better luck next time!`;
           setTimeout(() => {
-            startBtn.innerText = "Restart";
+            startBtn.innerText = "New word";
             blocker();
           }, 3000);
         }
