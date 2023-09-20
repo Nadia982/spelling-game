@@ -29,6 +29,7 @@ const options = {
 };
 
 //Initial references
+const questionNoContainer = document.querySelector(".question-no-container");
 const message = document.getElementById("message");
 const hintRef = document.querySelector(".hint-ref");
 const controls = document.querySelector(".controls-container");
@@ -128,6 +129,7 @@ for(let i = 0, tempnames = words, len = words.length; i <len; i++){
   // randomWord = words[generateRandomValue(words)];
   // randomWord = randomArray
   randomHint = options[randomWord];
+  questionNoContainer.innerHTML = `<div id="questionNo"><span>Question no: </span>${questionNo+1}</div>`;
   hintRef.innerHTML = `<div id="wordHint"><span>Definition: </span>${randomHint}</div>`;
   let displayItem = "";
   randomWord.split("").forEach((value) => {

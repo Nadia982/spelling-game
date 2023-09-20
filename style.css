@@ -29,6 +29,11 @@ body {
   border-radius: 1em;
 }
 
+.top-wrapper{
+  display: flex;
+  justify-content: space-between;
+}
+
 .controls-container {
   background-color: var(--primary-color);
   position: absolute;
@@ -135,10 +140,12 @@ body {
 }
 
 #user-input-section-chances {
-margin: 0;
+/* margin: 0;
 position: absolute;
 top: 2em;
-left: 2em;
+left: 2em; */
+width: 50vw;
+text-align: left;
 }
 
 .heart{
