@@ -60,6 +60,10 @@ body {
   padding: 1em 3em;
 }
 
+.speak {
+  border: 1px solid black;
+}
+
 .speak-buttons-container{
   display: flex;
   align-items: center;
@@ -186,6 +190,10 @@ text-align: left;
     display: flex;
     flex-direction: column;
   }
+
+  .speak-buttons-container{
+    justify-content: space-between;
+    }
 
   #start, .speak {
     margin-top: 0;
