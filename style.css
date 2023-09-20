@@ -64,6 +64,7 @@ body {
   align-items: center;
   justify-content: center;
   column-gap: 1em;
+  margin: 0;
 }
 
 .speak{
@@ -72,7 +73,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  /* margin: 0 auto; */
+  margin: 0;
 }
 
 /* .icon = play button icon in "replay the word button */
