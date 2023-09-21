@@ -206,26 +206,26 @@ const init = () => {
                   ticks: 120,
                   gravity: 0,
                   decay: 1,
-                  startVelocity: 3,
+                  startVelocity: 0.5,
                   shapes: ["star"],
                   colors: [
                     "FFE40011",
                     "FFBD0011",
                     "E8940011",
                     "FFCA6C11",
-                    "FDFFB822",
+                    "FDFFB811",
                   ],
                 };
 
                 function shoot() {
                   confetti({
                     ...defaults,
-                    particleCount: 100,
-                    scalar: 1.5,
+                    particleCount: 70,
+                    scalar: 2,
                     shapes: ["star"],
                   });
                 }
-                setTimeout(shoot, 10);
+                setTimeout(shoot, 50);
               }
             }, 0);
 
