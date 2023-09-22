@@ -13,7 +13,7 @@
 const options = {
   compliancy: "the state of being willing to do what someone else wants",
   comprehensible: "capable of being understood",
-  "computer-aided": "helped by a computer",
+  // "computer-aided": "helped by a computer",
   conceitedly: "doing something in an unpleasantly proud way",
   conscience: "a persons sense of right and wrong",
   conscious: "awake and aware of your surroundings",
@@ -222,7 +222,7 @@ const init = () => {
                   ticks: 120,
                   gravity: 0,
                   decay: 1,
-                  startVelocity: 0.5,
+                  startVelocity: 1,
                   shapes: ["star"],
                   colors: [
                     "FFE40002",
@@ -237,7 +237,7 @@ const init = () => {
                   confetti({
                     ...defaults,
                     particleCount: 70,
-                    scalar: 2,
+                    scalar: 1.8,
                     shapes: ["star"],
                   });
                 }
@@ -282,6 +282,9 @@ const init = () => {
     });
     //Append generated buttons to the letters container
     letterContainer.appendChild(button);
+  }
+  if (questionNo +1 === options.length) {
+    startBtn.innerText = "Game completed! Refresh your browser to start a new game.";
   }
 };
 
