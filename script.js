@@ -11,22 +11,24 @@
 
 // Object containing words and definitions
 const options = {
-  compliancy: "the state of being willing to do what someone else wants",
-  comprehensible: "capable of being understood",
-  // "computer-aided": "helped by a computer",
-  conceitedly: "doing something in an unpleasantly proud way",
-  conscience: "a persons sense of right and wrong",
-  conscious: "awake and aware of your surroundings",
-  constructible: "something that can be built",
-  controversy: "a subject that people have opposing strong views on",
-convenience: "the state of being easy to do",
-convertible: "something that can change in appearance or how it works",
-  correspond: "to match up with, or to write to", 
-  criticise: "to state the faults of a person or thing",
+    compliancy: "the state of being willing to do what someone else wants",
+    comprehensible: "capable of being understood",
+    conceitedly: "doing something in an unpleasantly proud way",
+    conscience: "a persons sense of right and wrong",
+    conscious: "awake and aware of your surroundings",
+    constructible: "something that can be built",
+    controversy: "a subject that people have opposing strong views on",
+  convenience: "the state of being easy to do",
+  convertible: "something that can change in appearance or how it works",
+    correspond: "to match up with, or to write to",
+    criticise: "to state the faults of a person or thing",
   crucial: "very important; vital",
   crumb: "a tiny piece of food",
-  debt: "money you have borrowed from someone else"
-  
+  debt: "money you have borrowed from someone else",
+  // t: "t",
+  // u: "u",
+  // "computer-aided": "helped by a computer",
+
   // bible: "holy book for Christians",
   // border: "dividing line between two countries",
   // bold: "brave, or bright in colour",
@@ -58,7 +60,7 @@ const userInpSectionChances = document.getElementById(
 );
 const userInpSectionWord = document.getElementById("user-input-section-word");
 const resultText = document.getElementById("result");
-// let word = document.getElementById("word");
+let word = document.getElementById("word");
 const words = Object.keys(options);
 let randomWord = "";
 let randomHint = "";
@@ -82,6 +84,7 @@ const blocker = () => {
 
 //Start game
 startBtn.addEventListener("click", () => {
+  const play = () => {
   const reset = () => {
     let allLetters = document.querySelectorAll(".letters");
     let allLettersArray = Array.from(allLetters);
@@ -90,13 +93,12 @@ startBtn.addEventListener("click", () => {
     allLettersArray.forEach((button) => button.classList.remove("incorrect"));
     message.innerText = "";
   };
-
-  reset();
   questionNo++;
+  reset();
   generateWord();
 
   controls.classList.add("hide");
-  init();
+  initialFunction();
   //Read random word out loud
   // speechSynthesis.getVoices();
   let voices = window.speechSynthesis.getVoices();
@@ -105,6 +107,9 @@ startBtn.addEventListener("click", () => {
   // msg.voice = voices[3];
   msg.text = randomWord;
   window.speechSynthesis.speak(msg);
+
+}
+play();
 });
 
 //Read word out loud after clicking "Say definition" button
@@ -133,14 +138,13 @@ const stopGame = () => {
 
 //Generate word function
 const generateWord = () => {
-
   // letterContainer = each tile holding the letters of the alphabet on a grid. This code makes the alphabet tiles visible
   letterContainer.classList.remove("hide");
   userInpSectionWord.innerText = "";
 
   // randomWord = words[generateRandomValue(words)];
   console.log(randomArray);
-  randomWord = randomArray[questionNo];
+  randomWord = randomArray[questionNo - 1];
   console.log(randomWord);
   randomHint = options[randomWord];
   console.log(randomHint);
@@ -156,7 +160,7 @@ const generateWord = () => {
 };
 
 //Initial function
-const init = () => {
+const initialFunction = () => {
   //Show remaining chances
   const showChances = () => {
     let heartsLeft = new Array(lossCount);
@@ -168,7 +172,7 @@ const init = () => {
   winCount = 0;
   lossCount = 5;
   randomWord = "";
-  word.innerText = "";
+  // word.innerText = "";
   randomHint = "";
   message.innerText = "";
   userInpSectionWord.innerHTML = "";
@@ -246,11 +250,30 @@ const init = () => {
             }, 0);
 
             if (winCount === charArray.length) {
-              setTimeout(() => {
-                startBtn.innerText = "Next word";
-                //block all buttons
-                blocker();
-              }, 2500);
+              console.log("questionNo is now " + questionNo);
+              console.log(
+                "options.length is now " + Object.keys(options).length
+              );
+
+              if (questionNo === Object.keys(options).length) {
+                console.log("They match!");
+                setTimeout(() => {
+                  startBtn.innerText =
+                    "Game completed! Click here to start a new game.";
+                  //block all buttons
+                  blocker();
+                  startBtn.addEventListener("click", () => {
+                    location.replace(location.href);
+                  });
+                }, 2500);
+               
+              } else {
+                setTimeout(() => {
+                  startBtn.innerText = "Next word";
+                  //block all buttons
+                  blocker();
+                }, 2500);
+              }
             }
           }
         });
@@ -283,11 +306,8 @@ const init = () => {
     //Append generated buttons to the letters container
     letterContainer.appendChild(button);
   }
-  if (questionNo +1 === options.length) {
-    startBtn.innerText = "Game completed! Refresh your browser to start a new game.";
-  }
 };
 
 window.onload = () => {
-  init();
+  initialFunction();
 };
