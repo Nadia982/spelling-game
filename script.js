@@ -17,7 +17,7 @@ const options = {
     conscience: "a persons sense of right and wrong",
     conscious: "awake and aware of your surroundings",
     constructible: "something that can be built",
-    controversy: "a subject that people have opposing strong views on",
+    controversy: "a subject that people have strong opposing views on",
   convenience: "the state of being easy to do",
   convertible: "something that can change in appearance or how it works",
     correspond: "to match up with, or to write to",
