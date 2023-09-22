@@ -11,21 +11,37 @@
 
 // Object containing words and definitions
 const options = {
-  bible: "holy book for Christians",
-  border: "dividing line between two countries",
-  bold: "brave, or bright in colour",
-  boarder: "a pupil who stays at school overnight",
-  borough: "name for different local areas in London",
-  bowled: "'threw', but in a ball game",
-  buffer:
-    "Something that provides a space or barrier to reduce impact between two things",
-  category: "type",
-  climb: "to ascend a steep or vertical surface",
-  collectable: "valuable item",
-  comb: "this isn't a brush, but you can use it to brush your hair",
-  commercial: "relating to business",
-  community: "group of people, often living near each other",
-  compatible: "if two people get on well then they are ____",
+  compliancy: "the state of being willing to do what someone else wants",
+  comprehensible: "capable of being understood",
+  "computer-aided": "helped by a computer",
+  conceitedly: "doing something in an unpleasantly proud way",
+  conscience: "a persons sense of right and wrong",
+  conscious: "awake and aware of your surroundings",
+  constructible: "something that can be built",
+  controversy: "a subject that people have opposing strong views on",
+convenience: "the state of being easy to do",
+convertible: "something that can change in appearance or how it works",
+  correspond: "to match up with, or to write to", 
+  criticise: "to state the faults of a person or thing",
+  crucial: "very important; vital",
+  crumb: "a tiny piece of food",
+  debt: "money you have borrowed from someone else"
+  
+  // bible: "holy book for Christians",
+  // border: "dividing line between two countries",
+  // bold: "brave, or bright in colour",
+  // boarder: "a pupil who stays at school overnight",
+  // borough: "name for different local areas in London",
+  // bowled: "'threw', but in a ball game",
+  // buffer:
+  //   "Something that provides a space or barrier to reduce impact between two things",
+  // category: "type",
+  // climb: "to ascend a steep or vertical surface",
+  // collectable: "valuable item",
+  // comb: "this isn't a brush, but you can use it to brush your hair",
+  // commercial: "relating to business",
+  // community: "group of people, often living near each other",
+  // compatible: "if two people get on well then they are ____",
 };
 
 //Initial references
@@ -209,11 +225,11 @@ const init = () => {
                   startVelocity: 0.5,
                   shapes: ["star"],
                   colors: [
-                    "FFE40011",
-                    "FFBD0011",
-                    "E8940011",
-                    "FFCA6C11",
-                    "FDFFB811",
+                    "FFE40002",
+                    "FFBD0003",
+                    "E8940004",
+                    "FFCA6C05",
+                    "FDFFB806",
                   ],
                 };
 
