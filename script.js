@@ -8,7 +8,7 @@
 // 10) about/contact pages
 
 // Object containing words and definitions
-// const preferredVoice = window.speechSynthesis.getVoices()[111];
+// const preferredVoice = window.speechSynthesis.getVoices()[3];
 const options = {
     compliancy: "the state of being willing to do what someone else wants",
     comprehensible: "capable of being understood",
@@ -45,8 +45,8 @@ const options = {
 
 //Initial references
 
-const timeOutLength = 5;
-const timeOutLengthButtons = 2;
+const timeOutLength = 7;
+const timeOutLengthButtons = 4;
 const questionNoContainer = document.querySelector(".question-no-container");
 const message = document.getElementById("message");
 const hintRef = document.querySelector(".hint-ref");
@@ -85,7 +85,7 @@ const synth = window.speechSynthesis;
 let speech = new SpeechSynthesisUtterance();
 
 setTimeout(()=> {
-  speech.voice = window.speechSynthesis.getVoices()[111];
+  speech.voice = window.speechSynthesis.getVoices()[3];
 }, timeOutLength);
 
 //Start game
@@ -117,7 +117,7 @@ speakWordBtn.addEventListener("click", () => {
   //Read random word out loud
     let speech = new SpeechSynthesisUtterance();
     setTimeout(()=> {
-      speech.voice = window.speechSynthesis.getVoices()[111];
+      speech.voice = window.speechSynthesis.getVoices()[3];
     }, timeOutLengthButtons);
   speech.text = randomWord;
   window.speechSynthesis.speak(speech);
@@ -128,7 +128,7 @@ speakDefinitionBtn.addEventListener("click", () => {
   //Read definition of random word out loud
   let speech = new SpeechSynthesisUtterance();
   setTimeout(()=> {
-    speech.voice = window.speechSynthesis.getVoices()[111];
+    speech.voice = window.speechSynthesis.getVoices()[3];
   }, timeOutLengthButtons);
 speech.text = randomHint;
 window.speechSynthesis.speak(speech);
