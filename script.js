@@ -82,6 +82,15 @@ const blocker = () => {
   stopGame();
 };
 
+//speech synthesis settings
+const synth = window.speechSynthesis;
+let speech = new SpeechSynthesisUtterance();
+
+setTimeout(()=> {
+  speech.voice = window.speechSynthesis.getVoices()[111];
+}, 10);
+
+
 //Start game
 startBtn.addEventListener("click", () => {
   const play = () => {
@@ -96,18 +105,11 @@ startBtn.addEventListener("click", () => {
   questionNo++;
   reset();
   generateWord();
-
   controls.classList.add("hide");
   initialFunction();
-  //Read random word out loud
-  // speechSynthesis.getVoices();
-  let voices = window.speechSynthesis.getVoices();
-  // console.log(voices);
-  let msg = new SpeechSynthesisUtterance();
-  // msg.voice = voices[3];
-  msg.text = randomWord;
-  window.speechSynthesis.speak(msg);
-
+  //Read random word out loud when window loads
+  speech.text = randomWord;
+  synth.speak(speech);
 }
 play();
 });
@@ -145,9 +147,7 @@ const generateWord = () => {
   // randomWord = words[generateRandomValue(words)];
   console.log(randomArray);
   randomWord = randomArray[questionNo - 1];
-  console.log(randomWord);
   randomHint = options[randomWord];
-  console.log(randomHint);
   questionNoContainer.innerHTML = `<div id="questionNo"><span>Question </span>${questionNo} of ${randomArray.length}</div>`;
   hintRef.innerHTML = `<div id="wordHint"><span>Definition: </span>${randomHint}</div>`;
   let displayItem = "";
@@ -282,9 +282,6 @@ const initialFunction = () => {
         button.classList.add("incorrect");
         lossCount--;
         showChances();
-        // document.getElementById(
-        //   "chanceCount"
-        // ).innerText = `Chances Left: ${lossCount}`;
         message.innerText = `Incorrect letter`;
         message.style.color = "#ff0000";
         if (lossCount <= 0) {
