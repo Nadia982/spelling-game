@@ -13,7 +13,7 @@ const options = {
     compliancy: "the state of being willing to do what someone else wants",
     comprehensible: "capable of being understood",
     conceitedly: "doing something in an unpleasantly proud way",
-    conscience: "a persons sense of right and wrong",
+    conscience: "a person's sense of right and wrong",
     conscious: "awake and aware of your surroundings",
     constructible: "something that can be built",
     controversy: "a subject that people have strong opposing views on",
