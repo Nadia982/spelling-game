@@ -45,8 +45,8 @@ const options = {
 
 //Initial references
 
-const timeOutLength = 7;
-const timeOutLengthButtons = 4;
+const timeOutLength = 50;
+const timeOutLengthButtons = 50;
 const questionNoContainer = document.querySelector(".question-no-container");
 const message = document.getElementById("message");
 const hintRef = document.querySelector(".hint-ref");
