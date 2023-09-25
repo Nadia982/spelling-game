@@ -1,7 +1,5 @@
 // To do next:
-// 1) enable choice of different voices/volume/rate/pitch
 // 3) enable typing of words on desktops
-// 4) add a visual depiction of lives remaining with heart emojis
 // 5) option to turn on animation/confetti (default should be "no confetti")
 // 6) smoother page transitions
 // 7) add a link to my portfolio - made with <3 by []
@@ -10,6 +8,7 @@
 // 10) about/contact pages
 
 // Object containing words and definitions
+// const preferredVoice = window.speechSynthesis.getVoices()[111];
 const options = {
     compliancy: "the state of being willing to do what someone else wants",
     comprehensible: "capable of being understood",
@@ -25,10 +24,8 @@ const options = {
   crucial: "very important; vital",
   crumb: "a tiny piece of food",
   debt: "money you have borrowed from someone else",
-  // t: "t",
-  // u: "u",
   // "computer-aided": "helped by a computer",
-
+  // ********************************
   // bible: "holy book for Christians",
   // border: "dividing line between two countries",
   // bold: "brave, or bright in colour",
@@ -47,6 +44,9 @@ const options = {
 };
 
 //Initial references
+
+const timeOutLength = 5;
+const timeOutLengthButtons = 2;
 const questionNoContainer = document.querySelector(".question-no-container");
 const message = document.getElementById("message");
 const hintRef = document.querySelector(".hint-ref");
@@ -74,8 +74,6 @@ for (let i = 0, tempnames = words, len = words.length; i < len; i++) {
   tempnames.splice(rnd, 1);
 }
 
-// const generateRandomValue = (array) => Math.floor(Math.random() * array.length);
-
 //Block all the buttons
 const blocker = () => {
   // let lettersButtons = document.querySelectorAll(".letters");
@@ -88,8 +86,7 @@ let speech = new SpeechSynthesisUtterance();
 
 setTimeout(()=> {
   speech.voice = window.speechSynthesis.getVoices()[111];
-}, 10);
-
+}, timeOutLength);
 
 //Start game
 startBtn.addEventListener("click", () => {
@@ -118,19 +115,23 @@ play();
 
 speakWordBtn.addEventListener("click", () => {
   //Read random word out loud
-  let voices = window.speechSynthesis.getVoices();
-  let msg = new SpeechSynthesisUtterance();
-  msg.text = randomWord;
-  window.speechSynthesis.speak(msg);
+    let speech = new SpeechSynthesisUtterance();
+    setTimeout(()=> {
+      speech.voice = window.speechSynthesis.getVoices()[111];
+    }, timeOutLengthButtons);
+  speech.text = randomWord;
+  window.speechSynthesis.speak(speech);
 });
 
 //Read definition out loud after clicking "Say definition" button
 speakDefinitionBtn.addEventListener("click", () => {
   //Read definition of random word out loud
-  let voices = window.speechSynthesis.getVoices();
-  let msg = new SpeechSynthesisUtterance();
-  msg.text = randomHint;
-  window.speechSynthesis.speak(msg);
+  let speech = new SpeechSynthesisUtterance();
+  setTimeout(()=> {
+    speech.voice = window.speechSynthesis.getVoices()[111];
+  }, timeOutLengthButtons);
+speech.text = randomHint;
+window.speechSynthesis.speak(speech);
 });
 
 //Stop game
@@ -161,6 +162,7 @@ const generateWord = () => {
 
 //Initial function
 const initialFunction = () => {
+
   //Show remaining chances
   const showChances = () => {
     let heartsLeft = new Array(lossCount);
