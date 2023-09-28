@@ -101,11 +101,24 @@ startBtn.addEventListener("click", () => {
 
     controls.classList.add("hide");
     initialFunction();
-    //Read random word out loud
-    // let voices = window.speechSynthesis.getVoices();
-    let msg = new SpeechSynthesisUtterance();
-    msg.text = randomWord;
-    window.speechSynthesis.speak(msg);
+  
+  //Read random word out loud
+  let msg = new SpeechSynthesisUtterance();
+  msg.text = randomWord;
+  let voiceList = document.querySelector("#voiceList");
+  PopulateVoices();
+  if (speechSynthesis !== undefined) {
+    speechSynthesis.onvoiceschanged = PopulateVoices;
+  }
+  let selectedVoiceName =
+    "Microsoft Sonia Online (Natural) - English (United Kingdom)";
+  voices.forEach((voice) => {
+    if (voice.name === selectedVoiceName) {
+      msg.voice = voice;
+    }
+  });
+  window.speechSynthesis.speak(msg);
+
   };
   play();
 });
@@ -128,6 +141,9 @@ function PopulateVoices() {
 
 //Read word out loud after clicking "Say word" button
 speakWordBtn.addEventListener("click", () => {
+  speakWordBtn.classList.add("glow")
+  setTimeout(()=>{
+    speakWordBtn.classList.remove("glow")}, 1500)
   //Read random word out loud
   let msg = new SpeechSynthesisUtterance();
   msg.text = randomWord;
