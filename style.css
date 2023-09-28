@@ -60,6 +60,10 @@ body {
   padding: 1em 3em;
 }
 
+.speak {
+  border: 1px solid black;
+}
+
 .speak-buttons-container{
   display: flex;
   align-items: center;
@@ -76,7 +80,6 @@ body {
   align-items: center;
   justify-content: space-evenly;
   margin: 0;
-  border: 1px solid black;
 }
 
 .speak > span {
@@ -188,13 +191,22 @@ text-align: left;
     flex-direction: column;
   }
 
+  .heartSpan{
+    margin-top: 0.5em;
+  }
+
   .speak-buttons-container{
     justify-content: space-between;
     }
 
   #start, .speak {
     margin-top: 0;
+    line-height: 0.9;
   }
+
+  /* .icon {
+    font-size: 1.5rem;
+  } */
 
   #letter-container button{
     font-size: 1.4rem;
