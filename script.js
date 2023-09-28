@@ -167,7 +167,7 @@ const initialFunction = () => {
   const showChances = () => {
     let heartsLeft = new Array(lossCount);
     heartsLeft.fill('<ion-icon class="heart" name="heart"></ion-icon>');
-    userInpSectionChances.innerHTML = `<div id="chanceCount"><span>Chances left (for this word): ${lossCount}</span><span class="heartSpan"> ${heartsLeft.join(
+    userInpSectionChances.innerHTML = `<div id="chanceCount"><span>Chances left (for this word): ${lossCount}</span><span> ${heartsLeft.join(
       " "
     )}</span></div>`;
   };

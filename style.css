@@ -188,10 +188,6 @@ text-align: left;
     flex-direction: column;
   }
 
-  .heartSpan{
-    margin-top: 0.5em;
-  }
-
   .speak-buttons-container{
     justify-content: space-between;
     }
