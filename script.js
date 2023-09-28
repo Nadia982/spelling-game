@@ -1,7 +1,5 @@
 // To do next:
-// 1) enable choice of different voices/volume/rate/pitch
 // 3) enable typing of words on desktops
-// 4) add a visual depiction of lives remaining with heart emojis
 // 5) option to turn on animation/confetti (default should be "no confetti")
 // 6) smoother page transitions
 // 7) add a link to my portfolio - made with <3 by []
@@ -10,11 +8,12 @@
 // 10) about/contact pages
 
 // Object containing words and definitions
+// const preferredVoice = window.speechSynthesis.getVoices()[3];
 const options = {
     compliancy: "the state of being willing to do what someone else wants",
     comprehensible: "capable of being understood",
     conceitedly: "doing something in an unpleasantly proud way",
-    conscience: "a persons sense of right and wrong",
+    conscience: "a person's sense of right and wrong",
     conscious: "awake and aware of your surroundings",
     constructible: "something that can be built",
     controversy: "a subject that people have strong opposing views on",
@@ -25,10 +24,8 @@ const options = {
   crucial: "very important; vital",
   crumb: "a tiny piece of food",
   debt: "money you have borrowed from someone else",
-  // t: "t",
-  // u: "u",
   // "computer-aided": "helped by a computer",
-
+  // ********************************
   // bible: "holy book for Christians",
   // border: "dividing line between two countries",
   // bold: "brave, or bright in colour",
@@ -47,6 +44,9 @@ const options = {
 };
 
 //Initial references
+
+const timeOutLength = 50;
+const timeOutLengthButtons = 50;
 const questionNoContainer = document.querySelector(".question-no-container");
 const message = document.getElementById("message");
 const hintRef = document.querySelector(".hint-ref");
@@ -74,13 +74,19 @@ for (let i = 0, tempnames = words, len = words.length; i < len; i++) {
   tempnames.splice(rnd, 1);
 }
 
-// const generateRandomValue = (array) => Math.floor(Math.random() * array.length);
-
 //Block all the buttons
 const blocker = () => {
   // let lettersButtons = document.querySelectorAll(".letters");
   stopGame();
 };
+
+//speech synthesis settings
+const synth = window.speechSynthesis;
+let speech = new SpeechSynthesisUtterance();
+
+setTimeout(()=> {
+  speech.voice = window.speechSynthesis.getVoices()[3];
+}, timeOutLength);
 
 //Start game
 startBtn.addEventListener("click", () => {
@@ -96,18 +102,11 @@ startBtn.addEventListener("click", () => {
   questionNo++;
   reset();
   generateWord();
-
   controls.classList.add("hide");
   initialFunction();
-  //Read random word out loud
-  // speechSynthesis.getVoices();
-  let voices = window.speechSynthesis.getVoices();
-  // console.log(voices);
-  let msg = new SpeechSynthesisUtterance();
-  // msg.voice = voices[3];
-  msg.text = randomWord;
-  window.speechSynthesis.speak(msg);
-
+  //Read random word out loud when window loads
+  speech.text = randomWord;
+  synth.speak(speech);
 }
 play();
 });
@@ -116,19 +115,23 @@ play();
 
 speakWordBtn.addEventListener("click", () => {
   //Read random word out loud
-  let voices = window.speechSynthesis.getVoices();
-  let msg = new SpeechSynthesisUtterance();
-  msg.text = randomWord;
-  window.speechSynthesis.speak(msg);
+    let speech = new SpeechSynthesisUtterance();
+    setTimeout(()=> {
+      speech.voice = window.speechSynthesis.getVoices()[3];
+    }, timeOutLengthButtons);
+  speech.text = randomWord;
+  window.speechSynthesis.speak(speech);
 });
 
 //Read definition out loud after clicking "Say definition" button
 speakDefinitionBtn.addEventListener("click", () => {
   //Read definition of random word out loud
-  let voices = window.speechSynthesis.getVoices();
-  let msg = new SpeechSynthesisUtterance();
-  msg.text = randomHint;
-  window.speechSynthesis.speak(msg);
+  let speech = new SpeechSynthesisUtterance();
+  setTimeout(()=> {
+    speech.voice = window.speechSynthesis.getVoices()[3];
+  }, timeOutLengthButtons);
+speech.text = randomHint;
+window.speechSynthesis.speak(speech);
 });
 
 //Stop game
@@ -145,9 +148,7 @@ const generateWord = () => {
   // randomWord = words[generateRandomValue(words)];
   console.log(randomArray);
   randomWord = randomArray[questionNo - 1];
-  console.log(randomWord);
   randomHint = options[randomWord];
-  console.log(randomHint);
   questionNoContainer.innerHTML = `<div id="questionNo"><span>Question </span>${questionNo} of ${randomArray.length}</div>`;
   hintRef.innerHTML = `<div id="wordHint"><span>Definition: </span>${randomHint}</div>`;
   let displayItem = "";
@@ -161,6 +162,7 @@ const generateWord = () => {
 
 //Initial function
 const initialFunction = () => {
+
   //Show remaining chances
   const showChances = () => {
     let heartsLeft = new Array(lossCount);
@@ -282,9 +284,6 @@ const initialFunction = () => {
         button.classList.add("incorrect");
         lossCount--;
         showChances();
-        // document.getElementById(
-        //   "chanceCount"
-        // ).innerText = `Chances Left: ${lossCount}`;
         message.innerText = `Incorrect letter`;
         message.style.color = "#ff0000";
         if (lossCount <= 0) {
