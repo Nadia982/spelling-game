@@ -11,24 +11,43 @@
 
 // Object containing words and definitions
 const options = {
-  compliancy: "the state of being willing to do what someone else wants",
-  comprehensible: "capable of being understood",
-  conceitedly: "doing something in an unpleasantly proud way",
-  conscience: "a persons sense of right and wrong",
-  conscious: "awake and aware of your surroundings",
-  constructible: "something that can be built",
-  controversy: "a subject that people have strong opposing views on",
-  convenience: "the state of being easy to do",
-  convertible: "something that can change in appearance or how it works",
-  correspond: "to match up with, or to write to",
-  criticise: "to state the faults of a person or thing",
-  crucial: "very important; vital",
-  crumb: "a tiny piece of food",
-  debt: "money you have borrowed from someone else",
+  // Third set of spellings
+    deceiving: "tricking", 
+    defensible: "a thing or idea that can be defended", 
+    defer: "to postpone or delay", 
+    definite: "certain", 
+    delicious: "tasty; good to eat",
+    dependable: "reliable",
+    design: "a plan or blueprint",
+    determined: "committed to doing something",
+    divisible: "capable of being divided",
+    doubt: "uncertainty",
+    dumb: "unable to speak",
+    elegancy: "gracefulness; beauty",
+    equip: "prepare or stock up", 
+    expectancy: "hope; probability",
+    extravagancy: "excess or wastefulness" 
+
+  // Second set of spellings  
+  // compliancy: "the state of being willing to do what someone else wants",
+  // comprehensible: "capable of being understood",
+  // conceitedly: "doing something in an unpleasantly proud way",
+  // conscience: "a person's sense of right and wrong",
+  // conscious: "awake and aware of your surroundings",
+  // constructible: "something that can be built",
+  // controversy: "a subject that people have strong opposing views on",
+  // convenience: "the state of being easy to do",
+  // convertible: "something that can change in appearance or how it works",
+  // correspond: "to match up with, or to write to",
+  // criticise: "to state the faults of a person or thing",
+  // crucial: "very important; vital",
+  // crumb: "a tiny piece of food",
+  // debt: "money you have borrowed from someone else",
   // t: "t",
   // u: "u",
   // "computer-aided": "helped by a computer",
 
+  // First set of spellings  
   // bible: "holy book for Christians",
   // border: "dividing line between two countries",
   // bold: "brave, or bright in colour",
@@ -101,28 +120,26 @@ startBtn.addEventListener("click", () => {
 
     controls.classList.add("hide");
     initialFunction();
-  
-  //Read random word out loud
-  let msg = new SpeechSynthesisUtterance();
-  msg.text = randomWord;
-  let voiceList = document.querySelector("#voiceList");
-  PopulateVoices();
-  if (speechSynthesis !== undefined) {
-    speechSynthesis.onvoiceschanged = PopulateVoices;
-  }
-  let selectedVoiceName =
-    "Microsoft Sonia Online (Natural) - English (United Kingdom)";
-  voices.forEach((voice) => {
-    if (voice.name === selectedVoiceName) {
-      msg.voice = voice;
-    }
-  });
-  window.speechSynthesis.speak(msg);
 
+    //Read random word out loud
+    let msg = new SpeechSynthesisUtterance();
+    msg.text = randomWord;
+    let voiceList = document.querySelector("#voiceList");
+    PopulateVoices();
+    if (speechSynthesis !== undefined) {
+      speechSynthesis.onvoiceschanged = PopulateVoices;
+    }
+    let selectedVoiceName =
+      "Microsoft Sonia Online (Natural) - English (United Kingdom)";
+    voices.forEach((voice) => {
+      if (voice.name === selectedVoiceName) {
+        msg.voice = voice;
+      }
+    });
+    window.speechSynthesis.speak(msg);
   };
   play();
 });
-
 
 function PopulateVoices() {
   voices = synth.getVoices();
@@ -141,9 +158,10 @@ function PopulateVoices() {
 
 //Read word out loud after clicking "Say word" button
 speakWordBtn.addEventListener("click", () => {
-  speakWordBtn.classList.add("glow")
-  setTimeout(()=>{
-    speakWordBtn.classList.remove("glow")}, 1500)
+  speakWordBtn.classList.add("glow");
+  setTimeout(() => {
+    speakWordBtn.classList.remove("glow");
+  }, 1500);
   //Read random word out loud
   let msg = new SpeechSynthesisUtterance();
   msg.text = randomWord;
@@ -160,13 +178,14 @@ speakWordBtn.addEventListener("click", () => {
     }
   });
   window.speechSynthesis.speak(msg);
-  });
+});
 
 //Read definition out loud after clicking "Say definition" button
 speakDefinitionBtn.addEventListener("click", () => {
-  speakDefinitionBtn.classList.add("glow")
-  setTimeout(()=>{
-    speakDefinitionBtn.classList.remove("glow")}, 3000)
+  speakDefinitionBtn.classList.add("glow");
+  setTimeout(() => {
+    speakDefinitionBtn.classList.remove("glow");
+  }, 3000);
   let msg = new SpeechSynthesisUtterance();
   msg.text = randomHint;
   let voiceList = document.querySelector("#voiceList");
@@ -182,7 +201,6 @@ speakDefinitionBtn.addEventListener("click", () => {
     }
   });
   window.speechSynthesis.speak(msg);
-  
 });
 
 //Stop game
