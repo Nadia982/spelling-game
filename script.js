@@ -11,22 +11,40 @@
 
 // Object containing words and definitions
 const options = {
+fancy: "elaborate or expensive",
+furious: "very angry",
+gnome: "a type of garden ornament", 
+handkerchief: "a piece of cloth that is used to blow your nose", 
+hospitable: "welcoming to guests", 
+hour: "60 minutes",
+independent: "able to manage by yourself",
+infer: "to work something out from other information you are given",
+lessen: "verb: to decrease",
+lesson: "noun: a time for learning, especially at school", 
+license: "verb: the act of allowing someone to do something", 
+licence: "noun: a certificate that allows you to do something e.g. a driving licence",
+limb: "arm or leg", 
+misunderstood: "misinterpreted", 
+nutritious: "healthy; containing vitamins and minerals"
+
+  //Fourth set of spellings 
+
   // Third set of spellings
-    deceiving: "tricking", 
-    defensible: "a thing or idea that can be defended", 
-    defer: "to postpone or delay", 
-    definite: "certain", 
-    delicious: "tasty; good to eat",
-    dependable: "reliable",
-    design: "a plan or blueprint",
-    determined: "committed to doing something",
-    divisible: "capable of being divided",
-    doubt: "uncertainty",
-    dumb: "unable to speak",
-    elegancy: "gracefulness; beauty",
-    equip: "prepare or stock up", 
-    expectancy: "hope; probability",
-    extravagancy: "excess or wastefulness" 
+    // deceiving: "tricking", 
+    // defensible: "a thing or idea that can be defended", 
+    // defer: "to postpone or delay", 
+    // definite: "certain", 
+    // delicious: "tasty; good to eat",
+    // dependable: "reliable",
+    // design: "a plan or blueprint",
+    // determined: "committed to doing something",
+    // divisible: "capable of being divided",
+    // doubt: "uncertainty",
+    // dumb: "unable to speak",
+    // elegancy: "gracefulness; beauty",
+    // equip: "prepare or stock up", 
+    // expectancy: "hope; probability",
+    // extravagancy: "excess or wastefulness" 
 
   // Second set of spellings  
   // compliancy: "the state of being willing to do what someone else wants",
