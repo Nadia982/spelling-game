@@ -11,7 +11,10 @@
 
 // Object containing words and definitions
 const options = {
-//fifth set of spellings
+// fifth set of spellings. Spellings were set in November 2023.
+
+mission: "abstract noun. An assignment or job given to a person. Or, a concrete noun when referring to the people who carry out the assignment",
+
 fictitious: "adjective: invented, made up",
 obedient: "adjective: someone who does what other people say",
 practise: "verb: to repeat something over and over again until you can do it well",
