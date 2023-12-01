@@ -11,26 +11,49 @@
 
 // Object containing words and definitions
 const options = {
+  // 2016 sample paper - paper 2
+  mission: "Meaning 1 - abstract noun: an assignment or job given to a person or group. Meaning 2 - concrete noun: the people who carry out the assignment",
+  lose: "verb: to misplace something",
+  loose: "adjective: something (especially clothing) that is not tight-fitting, or not tightly fixed in its place",
+  sign: "Meaning 1 - noun: a thing or gesture that indicates the location of something else. Meaning 2 - verb: to write one's name", 
+  country: "noun: a nation or territory",
+  gymnastics: "noun: a type of exercise that involves somersaults, flips, cartwheels, leaps, balancing and stretching", 
+  edible: "adjective: something that is capable of being eaten",  
+  sleigh: "Meaning 1 - noun: a sledge that can be used to slide on snow. Meaning 2 - verb: to ride on a sledge", 
+  delicious: "adjective: tasty", 
+  cent: "noun: 1/100 of a dollar", 
+  scent: "noun: a pleasant smell or perfume", 
+  sent: "verb: past participle of 'send'. Synonym: transmitted", 
+  illusion: "noun: an optical trick", 
+  parachute: "Meaning 1 - noun: a large cloth that pilots use to slow their descent if they have to eject from a plane. Meaning 2 - verb: the act of descending using this large cloth.", 
+  abundance: "noun: plenty", 
+  unavoidably: "adverb: unpreventably", 
+  ominous: "adjective: a sign that makes it seem that something bad is about to happen", 
+  dissolve: "verb: when a solid or powder becomes part of a liquid",
+  draw: "verb: to sketch or create an image on paper ",
+  drawer: "noun: a part of a piece of furniture that you can pull out to store small items",
+  position: "Meaning 1 - noun: the place where something is. Meaning 2 - verb: when you put something in a particular place", 
+  possession: "Noun: something that belongs to you",
+ 
 // fifth set of spellings. Spellings were set in November 2023.
+// fictitious: "adjective: invented, made up",
+// obedient: "adjective: someone who does what other people say",
+// practise: "verb: to repeat something over and over again until you can do it well",
+// practice: "noun: a training session, often for sport",
+// preference: "noun: liking one option better than another",
+// ridiculous: "adjective: strange or absurd",
+// seam: "noun: the edges of an item of clothing",
+// seem: "verb: to appear to be a certain way",
+// subtle: "adjective: gentle or not obvious",
+// thorough: "adjective: detailed or careful",
+// torturous: "adjective: painful or difficult",
+// transference: "noun: the act of transferring something",
+// unofficial: "adjective: not officially allowed",
 
-mission: "abstract noun. An assignment or job given to a person. Or, a concrete noun when referring to the people who carry out the assignment",
-
-fictitious: "adjective: invented, made up",
-obedient: "adjective: someone who does what other people say",
-practise: "verb: to repeat something over and over again until you can do it well",
-practice: "noun: a training session, often for sport",
-preference: "noun: liking one option better than another",
-ridiculous: "adjective: strange or absurd",
-seam: "noun: the edges of an item of clothing",
-seem: "verb: to appear to be a certain way",
-subtle: "adjective: gentle or not obvious",
-thorough: "adjective: detailed or careful",
-torturous: "adjective: painful or difficult",
-transference: "noun: the act of transferring something",
-official: "adjective: the correct way of doing something; or noun: a person who has official duties",
-unofficial: "adjective: not officially allowed",
-obey: "verb: to do what someone says",
-misunderstood: "adjective: when something is not interpreted correctly"
+// 2023 sample paper??? (check date)
+// official: "Meaning 1 - adjective: the correct way of doing something. Meaning 2 - noun: a person who has official duties",
+// obey: "verb: to do what someone says",
+// misunderstood: "adjective: when something is not interpreted correctly"
 
   //Fourth set of spellings 
 // fancy: "elaborate or expensive",

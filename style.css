@@ -8,7 +8,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: 'Atkinson Hyperlegible', sans-serif;
+  font-family: "Atkinson Hyperlegible", sans-serif;
 }
 
 body {
@@ -29,7 +29,7 @@ body {
   border-radius: 1em;
 }
 
-.top-wrapper{
+.top-wrapper {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
@@ -47,7 +47,8 @@ body {
   top: 0;
 }
 
-#start, .speak {
+#start,
+.speak {
   font-size: 1.2rem;
   background-color: #fff;
   border-radius: 1em;
@@ -64,7 +65,7 @@ body {
   border: 1px solid black;
 }
 
-.speak-buttons-container{
+.speak-buttons-container {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -72,7 +73,7 @@ body {
   margin: 0;
 }
 
-.speak{
+.speak {
   padding: 0.2em 0.8em;
   flex: 1 1 auto;
   max-width: 200px;
@@ -92,7 +93,7 @@ body {
 }
 
 /* #message = message above the alphabet tiles that reads "correct" or "incorrect" when you guess a correct/incorrect letter */
-#message{
+#message {
   height: 3em;
 }
 
@@ -128,17 +129,17 @@ body {
   border: 2px solid var(--incorrect);
 }
 
-.hint-ref{
+.hint-ref {
   margin-top: 1em;
   margin-bottom: 1em;
   font-size: 1.2rem;
 }
 
-.hint-ref span{
+.hint-ref span {
   font-weight: 600;
 }
 
-#user-input-section-word{
+#user-input-section-word {
   font-size: 2rem;
   display: flex;
   align-items: center;
@@ -150,24 +151,24 @@ body {
   width: 0.9em;
 }
 
-.question-no-container{
+.question-no-container {
   text-align: left;
   margin-bottom: 0.2em;
 }
 
 #user-input-section-chances {
-text-align: left;
+  text-align: left;
 }
 
-.heart{
+.heart {
   color: red;
 }
 
-#word{
-  font-weight: 600; 
+#word {
+  font-weight: 600;
 }
 
-#word span{
+#word span {
   text-transform: uppercase;
   font-weight: 400;
   margin-top: 0.5em;
@@ -181,32 +182,32 @@ text-align: left;
   color: #fff;
 }
 
-.voice-selection{
+.voice-selection {
   display: none;
 }
 
 .glow {
   transition: all 0.2s ease-in-out;
-  background-color: rgba(145, 92, 182, .2);
-  box-shadow: 0 5px 25px rgba(145, 92, 182, .4);
-  }
+  background-color: rgba(145, 92, 182, 0.2);
+  box-shadow: 0 5px 25px rgba(145, 92, 182, 0.4);
+}
 
 @media only screen and (max-width: 600px) {
- 
-    #chanceCount {
+  #chanceCount {
     display: flex;
     flex-direction: column;
   }
 
-  .heartSpan{
+  .heartSpan {
     margin-top: 0.5em;
   }
 
-  .speak-buttons-container{
+  .speak-buttons-container {
     justify-content: space-between;
-    }
+  }
 
-  #start, .speak {
+  #start,
+  .speak {
     margin-top: 0;
     line-height: 0.9;
   }
@@ -215,8 +216,17 @@ text-align: left;
     font-size: 1.5rem;
   } */
 
-  #letter-container button{
+  #letter-container button {
     font-size: 1.4rem;
   }
 }
 
+.attribution {
+  margin-top: 2rem;
+  display: block;
+  font-size: 0.7rem;
+}
+
+.start-screen.attribution {
+  margin: 1rem 0 0 1rem;
+}
