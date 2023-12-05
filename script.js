@@ -11,6 +11,12 @@
 
 // Object containing words and definitions
 const options = {
+  // sixth set of spellings (from 1 Dec 2023)
+  bridal: "relating to a female on her wedding day" ,
+  bridle: "something people put over a horse's head and nose to direct the horse when someone is riding it",
+  which: "a question word used when you are asking someone to select something", 
+  witch: "a mythical character that rides a broomstick and casts spells",
+
   // 2016 sample paper - paper 2
   mission: "Meaning 1 - abstract noun: an assignment or job given to a person or group. Meaning 2 - concrete noun: the people who carry out the assignment",
   lose: "verb: to misplace something",
@@ -18,22 +24,22 @@ const options = {
   sign: "Meaning 1 - noun: a thing or gesture that indicates the location of something else. Meaning 2 - verb: to write one's name", 
   country: "noun: a nation or territory",
   gymnastics: "noun: a type of exercise that involves somersaults, flips, cartwheels, leaps, balancing and stretching", 
-  edible: "adjective: something that is capable of being eaten",  
+  // edible: "adjective: something that is capable of being eaten",  
   sleigh: "Meaning 1 - noun: a sledge that can be used to slide on snow. Meaning 2 - verb: to ride on a sledge", 
   delicious: "adjective: tasty", 
   cent: "noun: 1/100 of a dollar", 
   scent: "noun: a pleasant smell or perfume", 
-  sent: "verb: past participle of 'send'. Synonym: transmitted", 
+  // sent: "verb: past participle of 'send'. Synonym: transmitted", 
   illusion: "noun: an optical trick", 
   parachute: "Meaning 1 - noun: a large cloth that pilots use to slow their descent if they have to eject from a plane. Meaning 2 - verb: the act of descending using this large cloth.", 
-  abundance: "noun: plenty", 
-  unavoidably: "adverb: unpreventably", 
+  // abundance: "noun: plenty", 
+  // unavoidably: "adverb: unpreventably", 
   ominous: "adjective: a sign that makes it seem that something bad is about to happen", 
   dissolve: "verb: when a solid or powder becomes part of a liquid",
   draw: "verb: to sketch or create an image on paper ",
   drawer: "noun: a part of a piece of furniture that you can pull out to store small items",
   position: "Meaning 1 - noun: the place where something is. Meaning 2 - verb: when you put something in a particular place", 
-  possession: "Noun: something that belongs to you",
+  // possession: "Noun: something that belongs to you",
  
 // fifth set of spellings. Spellings were set in November 2023.
 // fictitious: "adjective: invented, made up",
